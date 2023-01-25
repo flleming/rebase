@@ -5,11 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="icon" type="image/png" href="http://example.com/myicon.png">
+
 </head>
 <body>
     <div>
         hello <%= name %>
     </div>
     <div>with age <%=age %></div>
+    <button onclick="clicked()">test</button>
 </body>
+
+<script>
+
+    async function clicked(){
+        console.log("yoooo")
+        window.chrome.webview.postMessage({test:"test",age:14})
+    }
+    window.chrome.webview.addEventListener('message', event => {
+    console.log(event)
+    alert(event.data);
+});
+</script>
 </html>
